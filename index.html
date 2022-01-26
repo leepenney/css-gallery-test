@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Gallery Example Using Grid</title>
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        border: 0;   
+    }
+    body {
+        background-color: #333;
+        padding: 5rem 3rem;
+    }
+    .content {
+        display: grid;
+        margin: 0 auto;
+        gap: 0.5rem;
+        grid-template-columns: repeat(4, 1fr);
+        width: min(100%, 70rem);
+        grid-auto-rows: 15rem;
+    }
+    .card {
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        opacity: 0;
+        animation: fade_in 3s ease-in forwards;
+        animation-delay: calc(var(--order) * 1s);
+    }
+    .card:hover {
+        cursor: pointer;
+    }
+    .card:hover::after {
+        content: var(--title);
+        display: block;
+        color: #ccc;
+        font-family: sans-serif;
+        font-size: 1em;
+        width: 100%;
+        background: #111;
+        opacity: 0.8;
+        text-align: center;
+        padding: 1vh 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    @keyframes fade_in {
+        from { 
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    .grid-col-span-2 {
+        grid-column: span 2;
+    }
+    .grid-row-span-2 {
+        grid-row: span 2;
+    }
+    .card:last-child {
+        grid-row: 3 / span 2;
+        grid-column-start: 4;
+    }
+    @media (max-width: 500px) {
+        .content {
+            grid-template-columns: 1fr;
+        }
+        .grid-col-span-2, .grid-row-span-2, .card:last-child {
+            grid-row: auto;
+            grid-column: auto;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+    <div class="content">
+        <div class="card" style="--order: 1; 
+            background-image: url('img/a.lange-saxonia-1 - Copy.jpg'); --title: 'A. Lange Sohne Saxonia';"></div>
+        <div class="card" style="--order: 2; 
+            background-image: url('img/cartier-santos-3 - Copy.png'); --title: 'Cartier Santos';"></div>
+        <div class="card grid-col-span-2" style="--order: 3; 
+            background-image: url('img/breguet-classique-2 - Copy.jpg'); --title: 'Brequet Classique';"></div>
+        <div class="card grid-col-span-2" style="--order: 4; 
+            background-image: url('img/jlc-reverso-classique-1.jpg'); --title: 'JLC Reverso Classique';"></div>
+        <div class="card" style="--order: 5; 
+            background-image: url('img/daniel-roth-2 - Copy.jpg'); --title: 'Daniel Roth GMT';"></div>
+        <div class="card" style="--order: 6; 
+            background-image: url('img/omega-seamaster-14710-2.jpg'); --title: 'Omega Seamaster';"></div>
+        <div class="card" style="--order: 7; 
+            background-image: url('img/rolex-1600-matte-black.jpg'); --title: 'Rolex DateJust 1600';"></div>
+        <div class="card" style="--order: 8; 
+            background-image: url('img/Rolex_Oysterquartz_Datejust_17000_steel_watch_at_A_Collected_Man_London5.jpg');
+            --title: 'Rolex DateJust Oysterquartz';"></div>
+        <div class="card" style="--order: 9; 
+            background-image: url('img/Vacheron-Constantin-Patrimony-1.jpg'); --title: 'Vacheron Constantin Patrmony';"></div>
+        <div class="card grid-col-span-2" style="--order: 11; 
+            background-image: url('img/rolex-oyster-date-precision.JPG'); --title: 'Rolex Oysterdate';"></div>
+        <div class="card" style="--order: 12; 
+            background-image: url('img/Seiko-Sportsmatic-6619-8230-2.jpg'); --title: 'Seiko Sportsmatic 6619';"></div>
+        <div class="card grid-row-span-2" style="--order: 10; 
+            background-image: url('img/Universal-Geneve-Polerouter-3.JPG'); --title: 'Universal Geneve Polerouter';"></div>
+    </div>
+</body>
+</html> 
